@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+	layout:decorate="~{layout/layout1}">
+
+
+
+<div th:fragment="aboutContent">
+	<h1>About Plague Doctor</h1>
+	<h2>경험해보고 싶었던 “새로운 세상”</h2>
+	<h3>사실감 넘치는 인테리어와 신기하고 신선한 문제와 트릭 장치 그리고 전문작가의 흥미진진한 스토리까지!</h3>
+	<hr>
+	<div>
+		<h1>NOTICE</h1>
+		<p>이것만 꼭 지켜주세요!</p>
+	</div>
+	<div class="" style="display: flex; justify-content: center;">
+
+		<img src="/img/Notice.png">
+	</div>
+	<hr>
+	<h1>PRICE</h1>
+	<p>모임하기 딱좋은 방탈출~! 모일수록 가격은 다운!</p>
+	<table border="1">
+		<tr>
+			<th></th>
+			<th>60분</th>
+			<th>75분</th>
+		</tr>
+		<tr>
+			<td>2인</td>
+			<td>44,000</td>
+			<td>54,000</td>
+		</tr>
+		<tr>
+			<td>3인</td>
+			<td>60,000</td>
+			<td>75,000</td>
+		</tr>
+		<tr>
+			<td>4인</td>
+			<td>76,000</td>
+			<td>92,000</td>
+		</tr>
+		<tr>
+			<td>5인</td>
+			<td>90,000</td>
+			<td>110,000</td>
+		</tr>
+		<tr>
+			<td>6인</td>
+			<td>102,000</td>
+			<td>120,000</td>
+		</tr>
+
+	</table>
+
+	<hr>
+	<h1>LOCATION</h1>
+	<p>경험해보고 싶었던 "새로운 세상"</p>
+	<div id="map" style="width: 800px; height: 500px;"></div>
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=cfd7ca18075f71744c8d99852a955ae1"></script>
+	<script>
+		var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center : new kakao.maps.LatLng(35.8570894, 128.5558608), // 지도의 중심좌표
+			level : 4
+		// 지도의 확대 레벨
+		};
+
+		var map = new kakao.maps.Map(mapContainer, mapOption);
+
+		// 마커가 표시될 위치입니다 
+		var markerPosition = new kakao.maps.LatLng(35.8570894, 128.5558608);
+
+		// 마커를 생성합니다
+		var marker = new kakao.maps.Marker({
+			position : markerPosition
+		});
+
+		// 마커가 지도 위에 표시되도록 설정합니다
+		marker.setMap(map);
+
+		var iwContent = '<div style="padding:5px;">Plague Doctor</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+		iwPosition = new kakao.maps.LatLng(35.8570894, 128.5558608); //인포윈도우 표시 위치입니다
+
+		// 인포윈도우를 생성합니다
+		var infowindow = new kakao.maps.InfoWindow({
+			position : iwPosition,
+			content : iwContent
+		});
+
+		// 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
+		infowindow.open(map, marker);
+	</script>
+
+
+</div>
+
+
+
+</html>
