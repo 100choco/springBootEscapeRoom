@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/about")
-public class AboutController {
+@RequestMapping("/reservation")
+public class ReservationController {
 	
-	@GetMapping("/aboutpage")
-	public String aboutpage() {
+	@GetMapping("/reservationpage")
+	public String reservationpage() {
 		
-		System.out.println("어바웃페이지 접근");
+		System.out.println("reservation페이지 접근");
 		
-		return "/about/aboutpage";
+		return "/reservation/reservationpage";
 		
 	}
 }

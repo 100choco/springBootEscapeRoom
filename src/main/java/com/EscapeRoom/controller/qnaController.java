@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/about")
-public class AboutController {
+@RequestMapping("/qna")
+public class qnaController {
 	
-	@GetMapping("/aboutpage")
-	public String aboutpage() {
+	@GetMapping("/qnapage")
+	public String qnapage() {
 		
-		System.out.println("어바웃페이지 접근");
+		System.out.println("qna페이지 접근");
 		
-		return "/about/aboutpage";
+		return "/qna/qnapage";
 		
 	}
 }

@@ -5,15 +5,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/about")
-public class AboutController {
+@RequestMapping("/theme")
+public class ThemeController {
 	
-	@GetMapping("/aboutpage")
-	public String aboutpage() {
+	@GetMapping("/themepage")
+	public String themepage() {
 		
-		System.out.println("어바웃페이지 접근");
+		System.out.println("태마페이지 접근");
 		
-		return "/about/aboutpage";
+		return "/theme/themepage";
 		
 	}
 }
