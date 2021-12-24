@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8">
+<title>Plague Doctor</title>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="/js/Qna.js"></script>
+</head>
+<body>
+
+<div >
+	<!-- 헤더 -->
+	<div th:replace="fragments/header::header"></div>
+		
+	<!-- 본문 -->	
+	<div th:replace="qna/qnaLeadOneModify::qnaLeadOneModify"></div>
+	
+	<!-- 푸터 -->
+	<div th:replace="fragments/footer::footer"></div>
+</div>
+</body>
+</html>

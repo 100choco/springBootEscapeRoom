@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+	layout:decorate="~{layout/layout1}">
+
+
+
+<div th:fragment="qnaLeadOneModify">
+	<h1>LeadOneModify</h1>
+	<form action="" method="post" id="qnaUpdate">
+		<table border="1">
+			<tr th:each="selectByOne : ${selectByOne}">
+				<!-- <th>문의번호</th><th th:text="${selectByOne.qnaNo}"></th><th>제목</th><th th:text="${selectByOne.qnaTitle}"></th><th>문의날짜</th><td th:text="${selectByOne.qnaDate}"></td> -->
+				<th>문의번호</th> <td> <input type="text" th:value="${selectByOne.qnaNo}" name="qnaNo" readonly="readonly"> </td> <th>제목</th><td> <input type="text" th:value="${selectByOne.qnaTitle}" name="qnaTitle" ></td><th>문의날짜</th><td th:text="${selectByOne.qnaDate}"></td>
+			</tr>
+			
+			<tr>
+				<th>문의내용</th><td colspan="5"> <textarea rows="20" cols="90" th:value="${selectByOne.qnaContents}"></textarea> </td>
+			</tr>
+			<tr>
+				<td colspan="6"> <input type="button" value="제출하기"> </td>
+			</tr>
+		</table>
+	</form>
+</div>
+
+
+
+</html>

@@ -1,13 +1,3 @@
-select user(), database();
-
-drop database if exists springBootEscapeRoom;
-
-create database if not exists springBootEscapeRoom;
-
-use springBootEscapeRoom;
-
-show tables;
-
 -- 방 탈출
 DROP SCHEMA IF EXISTS springBootEscapeRoom;
 
@@ -66,10 +56,10 @@ CREATE TABLE springBootEscapeRoom.room (
 	difficultyNo    BIGINT      NOT NULL COMMENT '난이도번호', -- 난이도번호
 	playTimeNo      BIGINT      NOT NULL COMMENT '진행시간번호', -- 진행시간번호
 	operatingTimeNo BIGINT      NULL     COMMENT '운영시간번호', -- 운영시간번호
-	roomName        varchar(20) NOT NULL COMMENT '방이름', -- 방이름
-	roomCapacity    INT         NOT NULL COMMENT '방인원', -- 방인원
-	roomImg         VARCHAR(50) NOT NULL COMMENT '방이미지', -- 방이미지
-	roomPrice       INT         NOT NULL COMMENT '금액', -- 금액
+	roomName        varchar(20) NULL     COMMENT '방이름', -- 방이름
+	roomCapacity    INT         NULL     COMMENT '방인원', -- 방인원
+	roomImg         VARCHAR(50) NULL     COMMENT '방이미지', -- 방이미지
+	roomPrice       INT         NULL     COMMENT '금액', -- 금액
 	roomExplanation TEXT        NULL     COMMENT '방설명' -- 방설명
 )
 COMMENT '방';
@@ -130,10 +120,12 @@ ALTER TABLE springBootEscapeRoom.difficulty
 -- 1:1문의
 CREATE TABLE springBootEscapeRoom.qna (
 	qnaNo         BIGINT       NOT NULL COMMENT '문의번호', -- 문의번호
-	adminNo       BIGINT       NULL     COMMENT '관리자번호', -- 관리자번호
+	qnaTitle      varchar(50)  NOT NULL COMMENT '문의제목', -- 문의제목
 	qnaName       VARCHAR(10)  NOT NULL COMMENT '문의작성자', -- 문의작성자
 	qnaContents   TEXT         NOT NULL COMMENT '문의내용', -- 문의내용
-	qnaPassword   VARCHAR(100) NOT NULL COMMENT '문의비밀번호', -- 문의비밀번호
+	qnaPassword   VARCHAR(100) NULL     COMMENT '문의비밀번호', -- 문의비밀번호
+	qanDate       DATETIME     NOT NULL COMMENT '문의작성일', -- 문의작성일
+	adminNo       BIGINT       NULL     COMMENT '관리자번호', -- 관리자번호
 	qnaStatus     VARCHAR(20)  NULL     DEFAULT "미답변" COMMENT '답변상태', -- 답변상태
 	qnaAnswer     TEXT         NULL     COMMENT '답변내용', -- 답변내용
 	qnaAnswerDate DATETIME     NULL     COMMENT '답변일자' -- 답변일자

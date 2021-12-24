@@ -6,8 +6,27 @@
 
 
 <div th:fragment="qnaContent">
-	<h1>qna Plague Doctor</h1>
-
+	<h1>qna</h1>
+	<button onclick="location.href='/qna/qnaInsertPage'">글쓰기</button>
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>작성일</th>
+			<th>답변상태</th>
+		</tr>
+		<tr th:each="qnaAllList : ${qnaAllList}">
+			<td th:text="${qnaAllList.qnaNo}"></td>
+			
+			<td><a th:href="@{/qna/qnaLeadOnePage(qnaNo=${qnaAllList.qnaNo})}" th:text="${qnaAllList.qnaTitle}"></a></td>
+			<td th:text="${qnaAllList.qnaName}"></td>
+			<td th:text="${qnaAllList.qnaDate}"></td>
+			<td th:text="${qnaAllList.qnaStatus}"></td>
+		</tr>
+	</table>
+	
+	
 
 
 </div>

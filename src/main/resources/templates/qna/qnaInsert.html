@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+	layout:decorate="~{layout/layout1}">
+
+
+
+<div th:fragment="qnaInsert">
+	<h1>QnAInsertPage</h1>
+	
+	<!-- <form action="/qna/qnaInsert" method="post" > -->
+	<form action="/qna/qnaInsert" method="post" id="qnaInsertForm">
+	<table border="1">
+		<tr>
+			 <th>작성자</th>
+			 <td> <input type="text" name="qnaName" class="qnaName" id="qnaName" style="width: 298px" placeholder="작성자의 이름을 입력해 주세요."> </td>
+		</tr>
+		<tr>
+			 <th>제목</th>
+			 <td> <input type="text" name="qnaTitle" id="qnaTitle" style="width: 298px" placeholder="제목을 입력해 주세요."> </td>
+			 
+		</tr>
+		<tr>
+			 <th>내용</th>
+			 <td> <textarea name="qnaContents" id="qnaContents" style="width: 300px; height: 200px; resize: none;" placeholder="내용을 입력해 주세요."></textarea> </td>
+		</tr>
+		<tr>
+			 <th>비밀번호</th>
+			 <td> <input type="checkbox" class="qnaPWchk" id="qnaPWchk" checked="checked"> <input type="password" name="qnaPassword" id="qnaPassword" style="width: 272px" placeholder="비밀번호을 입력해 주세요."> </td>
+		</tr>
+		<tr>
+			 <th colspan="2" ><input type="button" class="qnaInsertBtn" value="등록하기"><a href="/qna/qnaPage">돌아가기</a></th>
+		</tr>
+		
+		
+	</table>
+	</form>
+	
+
+
+</div>
+
+
+
+</html>

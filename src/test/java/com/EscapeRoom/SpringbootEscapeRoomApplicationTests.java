@@ -8,6 +8,7 @@ class SpringbootEscapeRoomApplicationTests {
 
 	@Test
 	void contextLoads() {
+		
 	}
 
 }

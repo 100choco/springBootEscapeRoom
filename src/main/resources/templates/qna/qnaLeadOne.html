@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+	layout:decorate="~{layout/layout1}">
+
+
+
+<div th:fragment="qnaLeadOne">
+	<h1>LeadOne</h1>
+	<table border="1">
+		<tr th:each="selectByOne : ${selectByOne}">
+			<th>문의번호</th><th th:text="${selectByOne.qnaNo}"></th><th>제목</th><th th:text="${selectByOne.qnaTitle}"></th><th>문의날짜</th><td th:text="${selectByOne.qnaDate}"></td>
+		</tr>
+		
+		<tr>
+			<th>문의내용</th><th th:text="${selectByOne.qnaContents}" colspan="5"></th>
+		</tr>
+			
+	</table>
+	<a th:href="@{/qna/qnaLeadOneModifyPage(qnaNo=${selectByOne.qnaNo})}" th:text="수정하기"></a>
+	
+
+
+</div>
+
+
+
+</html>
