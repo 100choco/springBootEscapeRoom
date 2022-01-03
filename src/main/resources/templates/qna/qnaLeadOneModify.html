@@ -7,18 +7,23 @@
 
 <div th:fragment="qnaLeadOneModify">
 	<h1>LeadOneModify</h1>
-	<form action="" method="post" id="qnaUpdate">
+	<form action="/qna/qnaUpdate" method="get" class="qnaUpdateForm">
 		<table border="1">
 			<tr th:each="selectByOne : ${selectByOne}">
-				<!-- <th>문의번호</th><th th:text="${selectByOne.qnaNo}"></th><th>제목</th><th th:text="${selectByOne.qnaTitle}"></th><th>문의날짜</th><td th:text="${selectByOne.qnaDate}"></td> -->
-				<th>문의번호</th> <td> <input type="text" th:value="${selectByOne.qnaNo}" name="qnaNo" readonly="readonly"> </td> <th>제목</th><td> <input type="text" th:value="${selectByOne.qnaTitle}" name="qnaTitle" ></td><th>문의날짜</th><td th:text="${selectByOne.qnaDate}"></td>
-			</tr>
-			
-			<tr>
-				<th>문의내용</th><td colspan="5"> <textarea rows="20" cols="90" th:value="${selectByOne.qnaContents}"></textarea> </td>
+				
+				<th>문의번호</th> <td> <input type="text" th:value="${selectByOne.qnaNo}" name="qnaNo" class="qnaNo" readonly="readonly"> </td> <th>제목</th><td> <input type="text" th:value="${selectByOne.qnaTitle}" name="qnaTitle" class="qnaTitle"></td><th>문의날짜</th><td th:text="${selectByOne.qnaDate}"></td>
 			</tr>
 			<tr>
-				<td colspan="6"> <input type="button" value="제출하기"> </td>
+				<td>작성자</td> <td th:text="${selectByOne.qnaName}"></td>  <input type="hidden" name="qnaName" class="qnaName" th:value="${selectByOne.qnaName}"> 
+			</tr>
+			<tr>
+				<th>문의내용</th><td colspan="5"> <textarea rows="20" cols="90" class="qnaContents" name="qnaContents" th:text="${selectByOne.qnaContents}"></textarea> </td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>  <th> <input type="checkbox" class="qnaPWchk" checked="checked"> <input type="password" class="qnaPassword" name="qnaPassword"  th:value="${selectByOne.qnaPassword}"> </th>
+			</tr>
+			<tr>
+				<td colspan="6"> <input type="button" value="수정하기" class="qnaUpdateBtn"></td>
 			</tr>
 		</table>
 	</form>

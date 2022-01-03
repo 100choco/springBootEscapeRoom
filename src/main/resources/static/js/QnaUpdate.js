@@ -1,30 +1,28 @@
 $(function () {
 	
 //	alert("QnAInsert페이지");
-	$("#qnaPWchk").change(function () {
+	$(".qnaPWchk").change(function () {
 		
 	      if(this.checked){
-	         $("input#qnaPassword").prop("disabled", false);
+	         $("input.qnaPassword").prop("disabled", false);
 	         
 	      }else {
-	         $("input#qnaPassword").prop("disabled", true);
-	         $("input#qnaPassword").val("");
+	         $("input.qnaPassword").prop("disabled", true);
+	         $("input.qnaPassword").val("");
 
 	      }
 	   });
 	
-	$(".qnaInsertBtn").on("click", function (e) {
+	$(".qnaUpdateBtn").on("click", function () {
 		
-		var PBchk = $("#qnaPWchk").is(":checked");
-		var Nchk = $("#qnaName").val();
-		var Tchk = $("#qnaTitle").val();
-		var Cchk = $("#qnaContents").val();
-		var Pchk = $("#qnaPassword").val();
+		var PBchk = $(".qnaPWchk").is(":checked");
 		
+		var Tchk = $(".qnaTitle").val();
+		var Cchk = $(".qnaContents").val();
+		var Pchk = $(".qnaPassword").val();
+		alert(Tchk+"=========="+PBchk+"=========="+Cchk+"=========="+Pchk);
 		if(PBchk == true){
-			if(Nchk == ""){
-				alert("작성자의 이름을 입력해 주세요");
-			}else if(Tchk == ""){
+			if(Tchk == ""){
 				alert("작성자의 제목을 입력해 주세요");
 			}else if(Cchk == ""){
 				alert("작성글을 입력해 주세요");
@@ -32,7 +30,7 @@ $(function () {
 				alert("작성글의 비밀번호를 입력해 주세요");
 			}else{
 				alert("입력완료");
-				$("#qnaInsertForm").submit();
+				$(".qnaUpdateBtn").prop('type', 'submit').submit();
 			}
 		}else if(PBchk == false){
 			if(Nchk == ""){
@@ -43,7 +41,7 @@ $(function () {
 				alert("작성글을 입력해 주세요");
 			}else{
 				alert("입력완료");
-				$("#qnaInsertForm").submit();
+				$(".qnaUpdateBtn").prop('type', 'submit').submit();
 			}
 			
 		}

@@ -5,9 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Plague Doctor</title>
-
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="/js/QnaUpdate.js"></script>
+<script src="/js/adminPage.js"></script>
 </head>
 <body>
 
@@ -16,7 +15,7 @@
 	<div th:replace="fragments/header::header"></div>
 		
 	<!-- 본문 -->	
-	<div th:replace="qna/qnaLeadOneModify::qnaLeadOneModify"></div>
+	<div th:replace="admin/adminContent::adminContent"></div>
 	
 	<!-- 푸터 -->
 	<div th:replace="fragments/footer::footer"></div>

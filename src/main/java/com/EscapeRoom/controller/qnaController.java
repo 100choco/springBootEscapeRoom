@@ -72,13 +72,33 @@ public class qnaController {
 		
 	}
 	
-	@PostMapping("/qnaInsert")
+	@GetMapping("/qnaInsert")
 	public String qnaInsert(QnA qna) {
 		
 		qna.setQnaStatus("미답변");
 		qrepo.save(qna);
 		
-		return "redirect:qna/qnaContentPage";
+		return "redirect:/qna/qnaContentPage";
 	}
+	
+	@GetMapping("/qnaUpdate")
+	public String qnaUpdate(QnA qna) {
+		System.out.println("진입");
+		qna.setQnaStatus("미답변");
+		qrepo.save(qna);
+		
+		return "redirect:/qna/qnaContentPage";
+	}
+	
+	@GetMapping("/qnaLeadOneDelete")
+	public String qnaDelete(QnA qna) {
+		
+		System.out.println("삭제 진입");
+		System.out.println("값 확인==========" + qna);
+		qrepo.delete(qna);
+		
+		return "redirect:/qna/qnaContentPage";
+	}
+	
 	
 }
