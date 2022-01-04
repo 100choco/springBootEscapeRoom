@@ -93,7 +93,27 @@ $(function () {
 	
 	//=====================================테마라인
 	
+	//===================================== 이용시간 라인
 	
+	$(".playTimeInsertBtn").on("click", function() {
+			
+			let playTime = $(".playTime").val();
+			alert(playTime);
+			
+		$.ajax({
+				url: "/admin/playTimeInsert",
+				type: "post",
+				data: {"playTime":playTime},
+				dataType: "text",
+				success: function() {
+					alert(playTime + "진행시간이 추가 되었습니다");
+					location.reload();
+				}
+			})
+		
+		}) 
+		
+	//===================================== 이용시간 라인
 	
 })
 

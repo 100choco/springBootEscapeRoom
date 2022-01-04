@@ -72,21 +72,21 @@
 			<tr>
 				<td>진행시간번호</td>
 				<td>
-					<select name="themeNo" class="themeNo">
-						<option th:each="themeListAll : ${themeListAll}" th:text="${themeListAll.themeNo}" th:value="${themeListAll.themeNo}" class="themeOptionChk"></option>
+					<select name="playTimeNo" class="playTimeNo">
+						<option ></option>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td>진행시간이름</td>
-				<td><input type="text" name="themeName" class="themeName"> <input type="hidden" name="themeNo" class="hiddenNo">
+				<td>진행시간</td>
+				<td><input type="text" name="playTime" class="playTime"> <input type="hidden" name="playTimeNo" class="hiddenNo">
 				</td>
 			</tr>
 
 			<tr>
 				<td>
-					<button type="button" class="themeInsertBtn">추가</button>
-					<button type="button" class="themeUpdateBtn">수정</button>
+					<button type="button" class="playTimeInsertBtn">추가</button>
+					<button type="button" class="playTimeUpdateBtn">수정</button>
 							
 							
 							
@@ -96,7 +96,7 @@
 			</tr>
 		</table>
 
-		<form action="#" class="themeSection">
+		<form action="#" class="playTimeSection">
 			<table border="1">
 				<tr>
 					<th>진행시간 번호</th>
@@ -105,75 +105,20 @@
 					
 
 				</tr>
-				<tr th:each="themeListAll : ${themeListAll}">
-					<td th:text="${themeListAll.themeNo}"></td>
-					<td th:text="${themeListAll.themeName}"></td>
+				<tr th:each="playTimeListAll : ${playTimeListAll}">
+					<td th:text="${playTimeListAll.playTimeNo}"></td>
+					<td th:text="${playTimeListAll.playTime}"></td>
 					
-					<td><button type="button" class="themedeleteBtn"
-							th:value="${themeListAll.themeNo}">삭제</button></td>
+					<td>
+						<button type="button" class="playTimedeleteBtn">삭제</button>
+					</td>
 				</tr>
 
 			</table>
 		</form>
 	</div>
 	
-		<!-- <div>
-		<h1>theme Plague Doctor</h1>
-		<h3>테마</h3>
 		
-		<table>
-			<tr>
-				<td> 테마번호 </td> 
-				<td>
-					<select name="themeNo">
-						<option value="">No</option>	
-					</select> 
-				</td>
-			</tr>
-			<tr>
-				<td>테마이름</td>
-				<td> <input type="text" name="themeName"> </td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="themeInsertBtn">추가</button> 
-					<button type="button" class="themeUpdateBtn">수정</button>
-					<button type="button" class="themedeleteBtn">삭제</button>
-				</td>
-						
-			</tr>
-		</table>
-		
-	</div>
-	
-		<div>
-		<h1>theme Plague Doctor</h1>
-		<h3>테마</h3>
-		
-		<table>
-			<tr>
-				<td> 테마번호 </td> 
-				<td>
-					<select name="themeNo">
-						<option value="">No</option>	
-					</select> 
-				</td>
-			</tr>
-			<tr>
-				<td>테마이름</td>
-				<td> <input type="text" name="themeName"> </td>
-			</tr>
-			<tr>
-				<td>
-					<button type="button" class="themeInsertBtn">추가</button> 
-					<button type="button" class="themeUpdateBtn">수정</button>
-					<button type="button" class="themedeleteBtn">삭제</button>
-				</td>
-						
-			</tr>
-		</table>
-		
-	</div>  -->
 
 
 </div>

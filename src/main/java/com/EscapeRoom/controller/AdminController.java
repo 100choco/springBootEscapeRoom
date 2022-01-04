@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.EscapeRoom.entity.PlayTime;
 import com.EscapeRoom.entity.Theme;
 import com.EscapeRoom.repository.PlayTimeRepository;
 import com.EscapeRoom.repository.ThemeRepository;
@@ -28,13 +29,16 @@ public class AdminController {
 	
 	// 테마 호출 , 시간호출(진행중)
 	@GetMapping("/adminpage")
-	public String adminpage(Theme theme, Model model) {
+	public String adminpage(Theme theme,PlayTime playTime, Model model) {
+		
 		
 		
 		System.out.println("관리자페이지 이동하기");
 		
 		List<Theme> themeListAll = trepo.findAll();
+		List<PlayTime> playTimeListAll = preop.findAll();
 		model.addAttribute("themeListAll", themeListAll);
+		model.addAttribute("playTimeListAll", playTimeListAll);
 		
 		
 		return "admin/adminpage";
@@ -100,5 +104,22 @@ public class AdminController {
 	}
 	
 	// 테마 CRUD공간
+	
+	// 플레이타임 CRUD공간
+	
+	@PostMapping("/playTimeInsert")
+	@ResponseBody
+	public String playTimeInsert(PlayTime playTime) {
+		System.out.println(playTime);
+		System.out.println("playTime insert 전");
+		preop.save(playTime);
+		System.out.println(playTime);
+		System.out.println("playTime insert 완료");
+		
+		return "aaaa";
+		
+	}
+	
+	// 플레이타임 CRUD공간
 	
 }

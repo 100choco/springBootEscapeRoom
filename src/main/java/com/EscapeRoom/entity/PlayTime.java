@@ -1,7 +1,5 @@
 package com.EscapeRoom.entity;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,12 +18,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor		// 기본 생성자도 만들어 줘.
 @Table(name = "playTime")	// 메모테이블이 있다면 쓰고, 없으면 만들어준다.
 public class PlayTime {
-	
+	 
 	@Id					// pk라고 알려준다.
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 어떤 식으로 들어올껀데 밑에께 오토 인크리먼트. pk면서 autoincrement가 잡혀있다는 뜻
 	private Long playTimeNo;
 	
-	private Date platTime;
+	private String playTime;
 	
 	
 }
