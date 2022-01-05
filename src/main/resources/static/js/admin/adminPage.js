@@ -51,10 +51,9 @@ $(function () {
 	$(".themeNo").change(function () {
 		// 저렇게 쓸 필요없다. this.value쓰면 근처값 바로 땡겨준다.
 		/*let themeNo = $(this).closest('option').find(".themeOptionChk").val();*/
-		
 		let themeNo = this.value
 		
-		$(".hiddenNo").val(themeNo);
+		$(".hiddenThemeNo").val(themeNo);
 		
 		$.ajax({
 			url: "/admin/oneThemeCall",
@@ -113,7 +112,128 @@ $(function () {
 		
 		}) 
 		
+		
+		$(".playTimeNo").change(function () {
+		// 저렇게 쓸 필요없다. this.value쓰면 근처값 바로 땡겨준다.
+		/*let themeNo = $(this).closest('option').find(".themeOptionChk").val();*/
+		let playTimeNo = this.value
+		
+		$(".hiddenPlayTimeNo").val(playTimeNo);
+		
+		$.ajax({
+			url: "/admin/onePlayTimeCall",
+			type: "post",
+			data: {"playTimeNo":playTimeNo},
+			dataType: "text",
+			success: function(data) {
+				$(".playTime").val(data);
+				
+			
+			}
+		})
+		
+	})	
+	
+	$(".playTimeUpdateBtn").on("click", function () {
+		let PlayTimeNo = $(".hiddenPlayTimeNo").val();
+		let PlayTime = $(".playTime").val();
+		
+		$.ajax({
+			url: "/admin/onePlayTimeUpdate",
+			type: "post",
+			data: {"PlayTimeNo":PlayTimeNo,
+					"PlayTime":PlayTime
+					},
+			dataType: "text",
+			success: function(data) {
+				
+				alert("수정이 완료되었습니다.");
+				location.reload();
+				
+			
+			}
+		})
+	})
+		
+		
+		$(".playTimedeleteBtn").on("click", function() {
+		let playTimeNo = $(this).closest('tr').find(".playTimedeleteBtn").val();	
+		
+		if(confirm("삭제하시겠습니까?")){
+			
+			$.ajax({
+				url: "/admin/playTimeDelete",
+				type: "post",
+				data: {"playTimeNo":playTimeNo},
+				dataType: "text",
+				success: function(data) {
+					alert("삭제되었습니다.");
+					location.reload();
+				}
+			})
+			
+			
+		}else{
+			
+			alert("취소되었습니다.");
+			
+			
+		}
+		
+	})
+	
 	//===================================== 이용시간 라인
+	
+	//===============난이도
+	
+	$(".difficultyInsertBtn").on("click", function() {
+		
+		let difficulty = $(".difficulty").val();
+		alert(difficulty);
+		
+	$.ajax({
+			url: "/admin/difficultyInsert",
+			type: "post",
+			data: {"difficulty":difficulty},
+			dataType: "text",
+			success: function() {
+				alert(difficulty + "난이도를 추가하였습니다.");
+				location.reload();
+			}
+		})
+	
+	}) 
+	
+	
+	$(".difficultydeleteBtn").on("click", function() {
+		let difficultyNo = $(this).closest('tr').find(".difficultydeleteBtn").val();	
+		
+		alert(difficultyNo);
+		
+		if(confirm("삭제하시겠습니까?")){
+			
+			$.ajax({
+				url: "/admin/difficultydelete",
+				type: "post",
+				data: {"difficultyNo":difficultyNo},
+				dataType: "text",
+				success: function(data) {
+					alert("삭제되었습니다.");
+					location.reload();
+				}
+			})
+			
+			
+		}else{
+			
+			alert("취소되었습니다.");
+			
+			
+		}
+		
+	})
+	
+	//===============난이도
 	
 })
 

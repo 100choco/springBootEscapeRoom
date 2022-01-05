@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+<meta charset="UTF-8">
+<title>Plague Doctor</title>
+
+</head>
+<body>
+
+<div >
+	<!-- 헤더 -->
+	<div th:replace="fragments/header::header"></div>
+		
+	<!-- 본문 -->	
+	<div th:replace="signUp/signUpContent::signUpContent"></div>
+	
+	<!-- 푸터 -->
+	<div th:replace="fragments/footer::footer"></div>
+</div>
+</body>
+</html>

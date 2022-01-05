@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout=http://www.ultraq.net.nz/thymeleaf/layout
+	layout:decorate="~{layout/layout1}">
+
+
+
+<div th:fragment="themeRoomContent">
+<!-- =====================테마라인================== -->
+	<div style="float: left;">
+		<h1>theme</h1>
+		<h3>테마</h3>
+
+		<table>
+			<tr>
+				<td>테마번호</td>
+				<td>
+					<select name="themeNo" class="themeNo">
+						<option th:text="No" >
+						<option th:each="themeListAll : ${themeListAll}" th:text="${themeListAll.themeNo}" th:value="${themeListAll.themeNo}" class="themeOptionChk"></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>테마이름</td>
+				<td><input type="text" name="themeName" class="themeName"> <input type="hidden" name="themeNo" class="hiddenThemeNo">
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<button type="button" class="themeInsertBtn">추가</button>
+					<button type="button" class="themeUpdateBtn">수정</button>
+							
+							
+							
+
+				</td>
+
+			</tr>
+		</table>
+
+		<form action="#" class="themeSection">
+			<table border="1">
+				<tr>
+					<th>테마 번호</th>
+					<th>테마 이름</th>
+					<th>삭제</th>
+					
+
+				</tr>
+				<tr th:each="themeListAll : ${themeListAll}">
+					<td th:text="${themeListAll.themeNo}"></td>
+					<td th:text="${themeListAll.themeName}"></td>
+					
+					<td><button type="button" class="themedeleteBtn"
+							th:value="${themeListAll.themeNo}">삭제</button></td>
+				</tr>
+
+			</table>
+		</form>
+	</div>
+	
+<!-- =====================테마라인================== -->	
+
+<!-- =====================이용시간라인================== -->
+	 
+		<div style="float: left;">
+		<h1>playTime</h1>
+		<h3>진행시간</h3>
+		
+		<table>
+			<tr>
+				<td>진행시간번호</td>
+				<td>
+			
+					<select name="playTimeNo" class="playTimeNo">
+						<option th:text="No" >
+						<option th:each="playTimeListAll : ${playTimeListAll}" th:text="${playTimeListAll.playTimeNo}" th:value="${playTimeListAll.playTimeNo}" class="playTimeOptionChk"></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>진행시간</td>
+				<td><input type="text" name="playTime" class="playTime"> <input type="hidden" name="playTimeNo" class="hiddenPlayTimeNo">
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<button type="button" class="playTimeInsertBtn">추가</button>
+					<button type="button" class="playTimeUpdateBtn">수정</button>
+							
+							
+							
+
+				</td>
+
+			</tr>
+		</table>
+
+		<form action="#" class="playTimeSection">
+			<table border="1">
+				<tr>
+					<th>진행시간 번호</th>
+					<th>진행시간 이름</th>
+					<th>삭제</th>
+					
+
+				</tr>
+				<tr th:each="playTimeListAll : ${playTimeListAll}">
+					<td th:text="${playTimeListAll.playTimeNo}"></td>
+					<td th:text="${playTimeListAll.playTime}"></td>
+					
+					<td>
+						<button type="button" class="playTimedeleteBtn" th:value="${playTimeListAll.playTimeNo}">삭제</button>
+					</td>
+				</tr>
+
+			</table>
+		</form>
+	</div>
+	
+		
+<!-- =====================이용시간라인================== -->
+
+
+<!-- =====================난이도라인================== -->
+
+<div style="float: left;">
+		<h1>difficulty</h1>
+		<h3>난이도</h3>
+		
+		<table>
+			<tr>
+				<td>난이도번호</td>
+				<td>
+			
+					<select name="difficultyNo" class="difficultyNo">
+						<option th:text="No" >
+						<option th:each="difficultyListAll : ${difficultyListAll}" th:text="${difficultyListAll.difficultyNo}" th:value="${difficultyListAll.difficultyNo}" class="difficultyOptionChk"></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>난이도</td>
+				<td><input type="text" name="difficulty" class="difficulty"> <input type="hidden" name="difficultyNo" class="hiddenDifficultyNo">
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<button type="button" class="difficultyInsertBtn">추가</button>
+					
+							
+							
+							
+
+				</td>
+
+			</tr>
+		</table>
+
+		<form action="#" class="difficultySection">
+			<table border="1">
+				<tr>
+					<th>난이도 번호</th>
+					<th>난이도 이름</th>
+					<th>삭제</th>
+					
+
+				</tr>
+				<tr th:each="difficultyListAll : ${difficultyListAll}">
+					<td th:text="${difficultyListAll.difficultyNo}"></td>
+					<td th:text="${difficultyListAll.difficulty}"></td>
+					
+					<td>
+						<button type="button" class="difficultydeleteBtn" th:value="${difficultyListAll.difficultyNo}">삭제</button>
+					</td>
+				</tr>
+
+			</table>
+		</form>
+	</div>
+
+<!-- =====================난이도라인================== -->
+
+
+<!-- =====================운영시간라인================== -->
+
+
+<div>
+		<h1>operatingTime</h1>
+		<h3>운영시간</h3>
+		
+		<table>
+			<tr>
+				<td>운영시간번호</td>
+				<td>
+			
+					<select name="difficultyNo" class="difficultyNo">
+						<option th:text="No" >
+						<option th:each="difficultyListAll : ${difficultyListAll}" th:text="${difficultyListAll.difficultyNo}" th:value="${difficultyListAll.difficultyNo}" class="difficultyOptionChk"></option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>난이도</td>
+				<td><input type="text" name="difficulty" class="difficulty"> <input type="hidden" name="difficultyNo" class="hiddenDifficultyNo">
+				</td>
+			</tr>
+
+			<tr>
+				<td>
+					<button type="button" class="difficultyInsertBtn">추가</button>
+					
+							
+							
+							
+
+				</td>
+
+			</tr>
+		</table>
+
+		<form action="#" class="difficultySection">
+			<table border="1">
+				<tr>
+					<th>운영시간 번호</th>
+					<th>운영시간</th>
+					<th>삭제</th>
+					
+
+				</tr>
+				<tr th:each="difficultyListAll : ${difficultyListAll}">
+					<td th:text="${difficultyListAll.difficultyNo}"></td>
+					<td th:text="${difficultyListAll.difficulty}"></td>
+					
+					<td>
+						<button type="button" class="difficultydeleteBtn" th:value="${difficultyListAll.difficultyNo}">삭제</button>
+					</td>
+				</tr>
+
+			</table>
+		</form>
+	</div>
+
+<!-- =====================운영시간라인================== -->
+
+</div>
+
+
+
+</html>
