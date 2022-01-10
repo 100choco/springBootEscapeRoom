@@ -6,6 +6,8 @@
 
 
 <div th:fragment="themeRoomContent">
+
+<button type="button" th:onclick="location.href='/admin/createRoom/createRoomPage'">방만들기</button>
 <!-- =====================테마라인================== -->
 	<div style="float: left;">
 		<h1>theme</h1>
@@ -188,32 +190,32 @@
 
 <!-- =====================운영시간라인================== -->
 
-
-<div>
-		<h1>operatingTime</h1>
-		<h3>운영시간</h3>
+	 
+		<div>
+		<h1>playTime</h1>
+		<h3>진행시간</h3>
 		
 		<table>
 			<tr>
-				<td>운영시간번호</td>
+				<td>진행시간번호</td>
 				<td>
 			
-					<select name="difficultyNo" class="difficultyNo">
+					<select name="playTimeNo" class="playTimeNo">
 						<option th:text="No" >
-						<option th:each="difficultyListAll : ${difficultyListAll}" th:text="${difficultyListAll.difficultyNo}" th:value="${difficultyListAll.difficultyNo}" class="difficultyOptionChk"></option>
+						<option th:each="playTimeListAll : ${playTimeListAll}" th:text="${playTimeListAll.playTimeNo}" th:value="${playTimeListAll.playTimeNo}" class="playTimeOptionChk"></option>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td>난이도</td>
-				<td><input type="text" name="difficulty" class="difficulty"> <input type="hidden" name="difficultyNo" class="hiddenDifficultyNo">
+				<td>진행시간</td>
+				<td><input type="text" name="playTime" class="playTime"> <input type="hidden" name="playTimeNo" class="hiddenPlayTimeNo">
 				</td>
 			</tr>
 
 			<tr>
 				<td>
-					<button type="button" class="difficultyInsertBtn">추가</button>
-					
+					<button type="button" class="playTimeInsertBtn">추가</button>
+					<button type="button" class="playTimeUpdateBtn">수정</button>
 							
 							
 							
@@ -223,21 +225,21 @@
 			</tr>
 		</table>
 
-		<form action="#" class="difficultySection">
+		<form action="#" class="playTimeSection">
 			<table border="1">
 				<tr>
-					<th>운영시간 번호</th>
-					<th>운영시간</th>
+					<th>진행시간 번호</th>
+					<th>진행시간 이름</th>
 					<th>삭제</th>
 					
 
 				</tr>
-				<tr th:each="difficultyListAll : ${difficultyListAll}">
-					<td th:text="${difficultyListAll.difficultyNo}"></td>
-					<td th:text="${difficultyListAll.difficulty}"></td>
+				<tr th:each="playTimeListAll : ${playTimeListAll}">
+					<td th:text="${playTimeListAll.playTimeNo}"></td>
+					<td th:text="${playTimeListAll.playTime}"></td>
 					
 					<td>
-						<button type="button" class="difficultydeleteBtn" th:value="${difficultyListAll.difficultyNo}">삭제</button>
+						<button type="button" class="playTimedeleteBtn" th:value="${playTimeListAll.playTimeNo}">삭제</button>
 					</td>
 				</tr>
 

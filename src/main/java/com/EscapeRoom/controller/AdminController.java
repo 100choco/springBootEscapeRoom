@@ -201,5 +201,22 @@ public class AdminController {
 		
 	}
 	
+	// 테마 호출 , 시간호출(진행중)
+		@GetMapping("/createRoom/createRoomPage")
+		public String createRoompage(Theme theme,PlayTime playTime, Model model, Difficulty defficulty) {
+			
+			System.out.println("createRoom 이동하기");
+			
+			List<Theme> themeListAll = trepo.findAll();
+			List<PlayTime> playTimeListAll = prepo.findAll();
+			List<Difficulty> difficultyListAll = drepo.findAll();
+			model.addAttribute("themeListAll", themeListAll);
+			model.addAttribute("playTimeListAll", playTimeListAll);
+			model.addAttribute("difficultyListAll", difficultyListAll);
+			
+			
+			return "/admin/createRoom/createRoomPage";
+		}
+	
 	
 }
