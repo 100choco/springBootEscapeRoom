@@ -112,7 +112,7 @@
 				</tr>
 				<tr th:each="playTimeListAll : ${playTimeListAll}">
 					<td th:text="${playTimeListAll.playTimeNo}"></td>
-					<td th:text="${playTimeListAll.playTime}"></td>
+					<td th:text="${playTimeListAll.playTime}+분"></td>
 					
 					<td>
 						<button type="button" class="playTimedeleteBtn" th:value="${playTimeListAll.playTimeNo}">삭제</button>
@@ -174,7 +174,7 @@
 				</tr>
 				<tr th:each="difficultyListAll : ${difficultyListAll}">
 					<td th:text="${difficultyListAll.difficultyNo}"></td>
-					<td th:text="${difficultyListAll.difficulty}"></td>
+					<td th:text="${difficultyListAll.difficulty}+점"></td>
 					
 					<td>
 						<button type="button" class="difficultydeleteBtn" th:value="${difficultyListAll.difficultyNo}">삭제</button>
@@ -192,30 +192,30 @@
 
 	 
 		<div>
-		<h1>playTime</h1>
-		<h3>진행시간</h3>
+		<h1>operatingTime</h1>
+		<h3>운영시간</h3>
 		
 		<table>
 			<tr>
-				<td>진행시간번호</td>
+				<td>운영시간번호</td>
 				<td>
 			
-					<select name="playTimeNo" class="playTimeNo">
-						<option th:text="No" >
-						<option th:each="playTimeListAll : ${playTimeListAll}" th:text="${playTimeListAll.playTimeNo}" th:value="${playTimeListAll.playTimeNo}" class="playTimeOptionChk"></option>
+					<select name="operatingTimeNo" class="operatingTimeNo">
+						<option th:text="No">
+						<option th:each="operatingTimeListAll : ${operatingTimeListAll}" th:text="${operatingTimeListAll.operatingTimeNo}" th:value="${operatingTimeListAll.operatingTimeNo}" class="operatingTimeOptionChk"></option>
 					</select>
 				</td>
 			</tr>
 			<tr>
-				<td>진행시간</td>
-				<td><input type="text" name="playTime" class="playTime"> <input type="hidden" name="playTimeNo" class="hiddenPlayTimeNo">
+				<td>운영시간</td>
+				<td><input type="text" name="operatingTime" class="operatingTime"> <input type="hidden" name="operatingTimeNo" class="hiddenOperatingTimeNo">
 				</td>
 			</tr>
 
 			<tr>
 				<td>
-					<button type="button" class="playTimeInsertBtn">추가</button>
-					<button type="button" class="playTimeUpdateBtn">수정</button>
+					<button type="button" class="operatingTimeInsertBtn">추가</button>
+					<button type="button" class="operatingTimeUpdateBtn">수정</button>
 							
 							
 							
@@ -225,21 +225,21 @@
 			</tr>
 		</table>
 
-		<form action="#" class="playTimeSection">
+		<form action="#" class="operatingTimeSection">
 			<table border="1">
 				<tr>
-					<th>진행시간 번호</th>
-					<th>진행시간 이름</th>
+					<th>운영시간 번호</th>
+					<th>운영시간 이름</th>
 					<th>삭제</th>
 					
 
 				</tr>
-				<tr th:each="playTimeListAll : ${playTimeListAll}">
-					<td th:text="${playTimeListAll.playTimeNo}"></td>
-					<td th:text="${playTimeListAll.playTime}"></td>
+				<tr th:each="operatingTimeListAll : ${operatingTimeListAll}">
+					<td th:text="${operatingTimeListAll.operatingTimeNo}"></td>
+					<td th:text="${operatingTimeListAll.operatingTime}+시"></td>
 					
 					<td>
-						<button type="button" class="playTimedeleteBtn" th:value="${playTimeListAll.playTimeNo}">삭제</button>
+						<button type="button" class="operatingTimedeleteBtn" th:value="${operatingTimeListAll.operatingTimeNo}">삭제</button>
 					</td>
 				</tr>
 

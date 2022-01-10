@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.EscapeRoom.entity.Difficulty;
+import com.EscapeRoom.entity.OperatingTime;
 import com.EscapeRoom.entity.PlayTime;
 import com.EscapeRoom.entity.Theme;
 import com.EscapeRoom.repository.DifficultyRepository;
+import com.EscapeRoom.repository.OperatingTimeRepository;
 import com.EscapeRoom.repository.PlayTimeRepository;
 import com.EscapeRoom.repository.ThemeRepository;
 
@@ -32,18 +34,23 @@ public class AdminController {
 	@Autowired
 	DifficultyRepository drepo;
 	
+	@Autowired
+	OperatingTimeRepository orepo;
+	
 	// 테마 호출 , 시간호출(진행중)
 	@GetMapping("/themeRoom/themeRoomPage")
-	public String adminpage(Theme theme,PlayTime playTime, Model model, Difficulty defficulty) {
+	public String adminpage(Theme theme,PlayTime playTime, Model model, Difficulty defficulty, OperatingTime operatingTime) {
 		
 		System.out.println("관리자페이지 이동하기");
 		
 		List<Theme> themeListAll = trepo.findAll();
 		List<PlayTime> playTimeListAll = prepo.findAll();
 		List<Difficulty> difficultyListAll = drepo.findAll();
+		List<OperatingTime> operatingTimeListAll = orepo.findAll();
 		model.addAttribute("themeListAll", themeListAll);
 		model.addAttribute("playTimeListAll", playTimeListAll);
 		model.addAttribute("difficultyListAll", difficultyListAll);
+		model.addAttribute("operatingTimeListAll", operatingTimeListAll);
 		
 		
 		return "/admin/themeRoom/themeRoomPage";
@@ -128,7 +135,7 @@ public class AdminController {
 	
 	@PostMapping("/onePlayTimeCall")
 	@ResponseBody
-	public String onePlayTimeCall(PlayTime playTime) {
+	public int onePlayTimeCall(PlayTime playTime) {
 		
 		System.out.println("플레이타임 부르기 전");
 		
@@ -201,19 +208,82 @@ public class AdminController {
 		
 	}
 	
-	// 테마 호출 , 시간호출(진행중)
+	// 운영시간 crud
+	
+	@PostMapping("/operatingInsert")
+	@ResponseBody
+	public String operatingInsert(OperatingTime operatingTime) {
+		
+		System.out.println("운영시간 insert 전");
+		orepo.save(operatingTime);
+		System.out.println(operatingTime);
+		System.out.println("운영시간 insert 완료");
+		
+		return "themeInsert";
+		
+	}
+	
+	
+	  @PostMapping("/operatingTimedelete")
+	  @ResponseBody public String operatingTimedelete(OperatingTime operatingTime) {
+	  
+	  System.out.println("운영시간 Delete 전"); orepo.delete(operatingTime);
+	  System.out.println(operatingTime); System.out.println("테마 Delete 완료");
+	  
+	  return "operatingTimedelete";
+	  
+	  }
+	 
+	
+	
+	  @PostMapping("/oneOperatingTimeCall")
+	  @ResponseBody public int oneOperatingTimeCall(OperatingTime operatingTime) {
+	  
+	  System.out.println("operatingTime oneoperatingTimeCall 전");
+	  
+	  trepo.findById(operatingTime.getOperatingTimeNo());
+	  
+	  Optional<OperatingTime> oper = orepo.findById(operatingTime.getOperatingTimeNo());
+	  
+	  System.out.println("operatingTime oneoperatingTimeCall 완료");
+	  
+	  return oper.get().getOperatingTime();
+	  
+	  }
+	 
+	
+	
+	  @PostMapping("/oneOperatingTimeUpdate")
+	  @ResponseBody public void oneOperatingTimeUpdate(OperatingTime operatingTime) {
+	  
+	  System.out.println("OperatingTime 전");
+	  
+	  System.out.println("값확인 " + operatingTime);
+	  
+	  orepo.save(operatingTime);
+	  
+	  System.out.println("OperatingTime 완료");
+	  
+	  
+	  
+	  }
+	 
+	
+	
+	// 통합 출력
 		@GetMapping("/createRoom/createRoomPage")
-		public String createRoompage(Theme theme,PlayTime playTime, Model model, Difficulty defficulty) {
+		public String createRoompage(Theme theme,PlayTime playTime, Model model, Difficulty defficulty, OperatingTime operatingTime) {
 			
 			System.out.println("createRoom 이동하기");
 			
 			List<Theme> themeListAll = trepo.findAll();
 			List<PlayTime> playTimeListAll = prepo.findAll();
 			List<Difficulty> difficultyListAll = drepo.findAll();
+			List<OperatingTime> operatingTimeListAll = orepo.findAll();
 			model.addAttribute("themeListAll", themeListAll);
 			model.addAttribute("playTimeListAll", playTimeListAll);
 			model.addAttribute("difficultyListAll", difficultyListAll);
-			
+			model.addAttribute("operatingTimeListAll", operatingTimeListAll);
 			
 			return "/admin/createRoom/createRoomPage";
 		}

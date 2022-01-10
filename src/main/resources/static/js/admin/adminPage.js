@@ -235,6 +235,99 @@ $(function () {
 	
 	//===============난이도
 	
+	//============== 이용시간
+	
+	$(".operatingTimeInsertBtn").on("click", function() {
+		
+		var operatingTime = $(".operatingTime").val();
+		
+	$.ajax({
+			url: "/admin/operatingInsert",
+			type: "post",
+			data: {"operatingTime":operatingTime},
+			dataType: "text",
+			success: function() {
+				alert(operatingTime + "운영시간이 추가 되었습니다");
+				location.reload();
+			}
+		})
+	
+	}) 
+	
+	
+	
+	$(".operatingTimedeleteBtn").on("click", function() {
+		let operatingTimeNo = $(this).closest('tr').find(".operatingTimedeleteBtn").val();	
+		
+		if(confirm("삭제하시겠습니까?")){
+			
+			$.ajax({
+				url: "/admin/operatingTimedelete",
+				type: "post",
+				data: {"operatingTimeNo":operatingTimeNo},
+				dataType: "text",
+				success: function(data) {
+					alert("삭제되었습니다.");
+					location.reload();
+				}
+			})
+			
+			
+		}else{
+			
+			alert("취소되었습니다.");
+			
+			
+		}
+		
+	})
+	
+	
+	$(".operatingTimeNo").change(function () {
+		// 저렇게 쓸 필요없다. this.value쓰면 근처값 바로 땡겨준다.
+		
+		let operatingTimeNo = this.value
+		
+		$(".hiddenOperatingTimeNo").val(operatingTimeNo);
+		
+		$.ajax({
+			url: "/admin/oneOperatingTimeCall",
+			type: "post",
+			data: {"operatingTimeNo":operatingTimeNo},
+			dataType: "text",
+			success: function(data) {
+				$(".operatingTime").val(data);
+				
+			
+			}
+		})
+		
+	})
+	
+	$(".operatingTimeUpdateBtn").on("click", function () {
+		let operatingTimeNo = $(".hiddenOperatingTimeNo").val();
+		let operatingTime = $(".operatingTime").val();
+		
+		$.ajax({
+			url: "/admin/oneOperatingTimeUpdate",
+			type: "post",
+			data: {"operatingTimeNo":operatingTimeNo,
+					"operatingTime":operatingTime
+					},
+			dataType: "text",
+			success: function(data) {
+				
+				alert("수정이 완료되었습니다.");
+				location.reload();
+				
+			
+			}
+		})
+	})
+	
+	//============== 이용시간
+	
+	
 })
 
 

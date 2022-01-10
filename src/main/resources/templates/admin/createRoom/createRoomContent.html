@@ -5,30 +5,37 @@
 
 
 
-<div th:fragment="createRoomContent">
+		<div th:fragment="createRoomContent">
+			<form action="">
+				<select name="roomName" class="roomName">
+					<option th:text="테마이름" >
+					<option th:each="themeListAll : ${themeListAll}" th:text="${themeListAll.themeName}" th:value="${themeListAll.themeNo}" class="themeOptionChk"></option>
+				</select>
+				<br>
+				<select name="playTimeNo" class="playTimeNo">
+					<option th:text="진행시간" >
+					<option th:each="playTimeListAll : ${playTimeListAll}" th:text="${playTimeListAll.playTime}+분" th:value="${playTimeListAll.playTimeNo}" class="playTimeOptionChk"></option>
+				</select>
+				<br>
+		
+				<select name="difficultyNo" class="difficultyNo">
+					<option th:text="어려움정도" >
+					<option th:each="difficultyListAll : ${difficultyListAll}" th:text="${difficultyListAll.difficulty}+점" th:value="${difficultyListAll.difficultyNo}" class="difficultyOptionChk"></option>
+				</select>
+				<br>
+				<!-- <input type="text" th:each="themeListAll : ${themeListAll}" th:text="${themeListAll.themeName}" th:value="roomName"> -->
+				<br>
 
-					<select name="themeNo" class="themeNo">
-						<option th:text="테마이름" >
-						<option th:each="themeListAll : ${themeListAll}" th:text="${themeListAll.themeName}" th:value="${themeListAll.themeName}" class="themeOptionChk"></option>
-					</select>
-					<br>
-					<select name="playTimeNo" class="playTimeNo">
-						<option th:text="진행시간" >
-						<option th:each="playTimeListAll : ${playTimeListAll}" th:text="${playTimeListAll.playTime}" th:value="${playTimeListAll.playTime}" class="playTimeOptionChk"></option>
-					</select>
-					<br>
-			
-					<select name="difficultyNo" class="difficultyNo">
-						<option th:text="어려움정도" >
-						<option th:each="difficultyListAll : ${difficultyListAll}" th:text="${difficultyListAll.difficulty}+점" th:value="${difficultyListAll.difficulty}" class="difficultyOptionChk"></option>
-					</select>
-					<br>
-			
-					<select name="playTimeNo" class="playTimeNo">
-						<option th:text="운영시간" >
-						<option th:each="playTimeListAll : ${playTimeListAll}" th:text="${playTimeListAll.playTimeNo}" th:value="${playTimeListAll.playTimeNo}" class="playTimeOptionChk"></option>
-					</select>
-</div>
+				<br>
+
+				<br>
+				
+				
+				
+				<input type="text" value="">
+				
+				</form>
+		</div>
 
 
 
