@@ -1,10 +1,17 @@
 package com.EscapeRoom.entity;
 
+import java.io.File;
+import java.sql.Blob;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,13 +30,15 @@ public class Room {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 어떤 식으로 들어올껀데 밑에께 오토 인크리먼트. pk면서 autoincrement가 잡혀있다는 뜻
 	private Long roomNo;
 	
-	private Long themeNo;
-	private Long difficultyNo;
-	private Long playTimeNo;
-	private Long operatingTimeNo;
-	private String roomName;
-	private int roomCapacity;
-	private String roomImg;
+	private Long themeNo;			//
+	private Long difficultyNo;		//
+	private Long playTimeNo;		//
+	private Long operatingTimeNo;	//
+	private String roomName;		
+	private String roomCapacity;
+	@Lob
+	@Column(name = "roomImg" )
+	private MultipartFile roomImg;
 	private int roomPrice;
 	private String roomExplanation;
 	

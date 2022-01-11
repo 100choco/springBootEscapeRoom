@@ -4,37 +4,41 @@
 	layout:decorate="~{layout/layout1}">
 
 
-
+ 
 		<div th:fragment="createRoomContent">
-			<form action="">
-				<select name="roomName" class="roomName">
-					<option th:text="테마이름" >
-					<option th:each="themeListAll : ${themeListAll}" th:text="${themeListAll.themeName}" th:value="${themeListAll.themeNo}" class="themeOptionChk"></option>
-				</select>
+			<form action="/admin/createRoom/createRoomInsert" method="post" class="createRoomForm" enctype="multipart/form-data">
+				테마번호와 이름 : <select name="themeNo" class="themeNo">
+							<option th:text="테마이름" disabled>
+							<option th:each="themeListAll : ${themeListAll}" th:text="${themeListAll.themeNo}" th:value="${themeListAll.themeNo}" class="themeOptionChk"></option>
+						</select>
+						<input type="text" name="roomName" class="hiddenRoomName">
 				<br>
-				<select name="playTimeNo" class="playTimeNo">
-					<option th:text="진행시간" >
-					<option th:each="playTimeListAll : ${playTimeListAll}" th:text="${playTimeListAll.playTime}+분" th:value="${playTimeListAll.playTimeNo}" class="playTimeOptionChk"></option>
-				</select>
-				<br>
-		
-				<select name="difficultyNo" class="difficultyNo">
-					<option th:text="어려움정도" >
-					<option th:each="difficultyListAll : ${difficultyListAll}" th:text="${difficultyListAll.difficulty}+점" th:value="${difficultyListAll.difficultyNo}" class="difficultyOptionChk"></option>
-				</select>
-				<br>
-				<!-- <input type="text" th:each="themeListAll : ${themeListAll}" th:text="${themeListAll.themeName}" th:value="roomName"> -->
-				<br>
-
-				<br>
-
+				진행시간 : <select name="playTimeNo" class="playTimeNo">
+							<option disabled>진행시간</option>
+							<option th:each="playTimeListAll : ${playTimeListAll}" th:text="${playTimeListAll.playTime}+분" th:value="${playTimeListAll.playTimeNo}" class="playTimeOptionChk"></option>
+						</select>
 				<br>
 				
+				어려움 :	<select name="difficultyNo" class="difficultyNo">
+							<option th:text="어려움정도" disabled>
+							<option th:each="difficultyListAll : ${difficultyListAll}" th:text="${difficultyListAll.difficulty}+점" th:value="${difficultyListAll.difficultyNo}" class="difficultyOptionChk"></option>
+						</select>
+				<br>
+				사진 : 	<input multiple="multiple" type="file" name="roomImg">
+				<br>
+				인원 수 : <input type="text" name="roomCapacity">
+				<br>
+				금액 : <input type="text" name="roomPrice">
+				<br>
+				방 설명 : <textarea rows="10" cols="30" name="roomExplanation"></textarea>
+				
+				<input type="button" class="createRoomBtn" value="등록하기">
 				
 				
-				<input type="text" value="">
 				
 				</form>
+
+				
 		</div>
 
 

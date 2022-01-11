@@ -1,5 +1,6 @@
 package com.EscapeRoom.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,17 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.EscapeRoom.entity.Difficulty;
 import com.EscapeRoom.entity.OperatingTime;
 import com.EscapeRoom.entity.PlayTime;
+import com.EscapeRoom.entity.Room;
 import com.EscapeRoom.entity.Theme;
 import com.EscapeRoom.repository.DifficultyRepository;
 import com.EscapeRoom.repository.OperatingTimeRepository;
 import com.EscapeRoom.repository.PlayTimeRepository;
+import com.EscapeRoom.repository.RoomRepository;
 import com.EscapeRoom.repository.ThemeRepository;
 
 
@@ -37,6 +43,8 @@ public class AdminController {
 	@Autowired
 	OperatingTimeRepository orepo;
 	
+	@Autowired
+	RoomRepository rrepo;
 	// 테마 호출 , 시간호출(진행중)
 	@GetMapping("/themeRoom/themeRoomPage")
 	public String adminpage(Theme theme,PlayTime playTime, Model model, Difficulty defficulty, OperatingTime operatingTime) {
@@ -272,7 +280,7 @@ public class AdminController {
 	
 	// 통합 출력
 		@GetMapping("/createRoom/createRoomPage")
-		public String createRoompage(Theme theme,PlayTime playTime, Model model, Difficulty defficulty, OperatingTime operatingTime) {
+		public String createRoompage(Theme theme,PlayTime playTime, Model model, Difficulty defficulty, OperatingTime operatingTime, Room room) throws IOException {
 			
 			System.out.println("createRoom 이동하기");
 			
@@ -285,8 +293,39 @@ public class AdminController {
 			model.addAttribute("difficultyListAll", difficultyListAll);
 			model.addAttribute("operatingTimeListAll", operatingTimeListAll);
 			
+			
+			
+
+			
+			
 			return "/admin/createRoom/createRoomPage";
 		}
+		
+		
+		@PostMapping("/createRoom/createRoomInsert") 
+		public String createRoomInsert(@ModelAttribute Room room, @RequestParam("roomImg") MultipartFile roomImg) throws IOException {
+			  
+			  
+		List<OperatingTime> operatingTimeListAll = orepo.findAll();
+		
+			 
+		room.setRoomImg(roomImg);
+			  
+		System.out.println("room 전");
+		  
+		System.out.println("room.getRoomImg() 값확인 " + roomImg.toString());
+		  
+		rrepo.save(room);
+		  
+		  
+		System.out.println("room 완료");
+		  
+		  
+		return "redirect:/admin/createRoom/createRoomPage";
+		
+		}
+		 
+		  
 	
 	
 }
